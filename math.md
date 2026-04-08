@@ -1,3 +1,4 @@
+```mermaid
 graph TD
     Start([输入：密集的深度神经网络模型]) --> Stage1
 
@@ -13,8 +14,8 @@ graph TD
 
     Stage1 --> Transition{达到过渡条件？<br>稀疏率达标或模型稳定}
 
-    Transition -->|否 (继续非结构化剪枝)| Stage1
-    Transition -->|是 (触发切换)| Stage2
+    Transition -->|否 - 继续非结构化剪枝| Stage1
+    Transition -->|是 - 触发切换| Stage2
 
     subgraph Stage2 [阶段二：动态分层 N:M 结构化剪枝 Structured Pruning]
         direction TB
@@ -27,5 +28,6 @@ graph TD
 
     Stage2 --> CheckEnd{达到最终目标稀疏率？}
 
-    CheckEnd -->|否 (递减 N, 提高稀疏度)| Stage2
-    CheckEnd -->|是 (训练结束)| End([输出：硬件友好的 N:M 结构化稀疏模型])
+    CheckEnd -->|否 - 递减 N, 提高稀疏度 | Stage2
+    CheckEnd -->|是 - 训练结束 | End([输出：硬件友好的 N:M 结构化稀疏模型])
+```
